@@ -7,24 +7,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { autoinject, bindable, customAttribute } from 'aurelia-framework';
+import { TaskQueue, autoinject, bindable, customAttribute } from 'aurelia-framework';
 import { RouteMapper } from './route-mapper';
 var MapperHref = /** @class */ (function () {
-    function MapperHref(element, mapper) {
+    function MapperHref(element, mapper, taskQueue) {
         this.element = element;
         this.mapper = mapper;
+        this.taskQueue = taskQueue;
         this.attribute = 'href';
+        this.pendingChanges = false;
     }
     MapperHref.prototype.processChange = function () {
-        if (this.route) {
-            var href = this.mapper.generate(this.route, this.params);
-            var element = this.element;
-            if (element.au.controller) {
-                element.au.controller.viewModel[this.attribute] = href;
+        // Delay the updating until after both route and params are set
+        this.pendingChanges = true;
+        this.taskQueue.queueMicroTask(this.makeHref);
+    };
+    MapperHref.prototype.makeHref = function () {
+        if (this.pendingChanges) {
+            if (this.route) {
+                var href = this.mapper.generate(this.route, this.params);
+                var element = this.element;
+                if (element.au.controller) {
+                    element.au.controller.viewModel[this.attribute] = href;
+                }
+                else {
+                    this.element.setAttribute(this.attribute, href);
+                }
             }
-            else {
-                this.element.setAttribute(this.attribute, href);
-            }
+            this.pendingChanges = false;
         }
     };
     __decorate([
@@ -42,7 +52,7 @@ var MapperHref = /** @class */ (function () {
     MapperHref = __decorate([
         autoinject(),
         customAttribute('mapper-href'),
-        __metadata("design:paramtypes", [Element, RouteMapper])
+        __metadata("design:paramtypes", [Element, RouteMapper, TaskQueue])
     ], MapperHref);
     return MapperHref;
 }());

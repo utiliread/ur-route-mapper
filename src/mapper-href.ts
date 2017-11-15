@@ -1,4 +1,4 @@
-import { autoinject, bindable, customAttribute } from 'aurelia-framework';
+import { TaskQueue, autoinject, bindable, customAttribute } from 'aurelia-framework';
 
 import { RouteMapper } from './route-mapper';
 
@@ -14,20 +14,32 @@ export class MapperHref {
     @bindable()
     attribute = 'href';
 
-    constructor(private element: Element, private mapper: RouteMapper) {
+    private pendingChanges = false;
+
+    constructor(private element: Element, private mapper: RouteMapper, private taskQueue: TaskQueue) {
     }
 
     processChange() {
-        if (this.route) {
-            let href = this.mapper.generate(this.route, this.params);
-            let element: any = this.element;
+        // Delay the updating until after both route and params are set
+        this.pendingChanges = true;
+        this.taskQueue.queueMicroTask(this.makeHref);
+    }
 
-            if (element.au.controller) {
-                element.au.controller.viewModel[this.attribute] = href;
+    private makeHref() {
+        if (this.pendingChanges) {
+            if (this.route) {
+                let href = this.mapper.generate(this.route, this.params);
+                let element: any = this.element;
+
+                if (element.au.controller) {
+                    element.au.controller.viewModel[this.attribute] = href;
+                }
+                else {
+                    this.element.setAttribute(this.attribute, href);
+                }
             }
-            else {
-                this.element.setAttribute(this.attribute, href);
-            }
+
+            this.pendingChanges = false;
         }
     }
 }
