@@ -1,9 +1,9 @@
-import { bindable, customAttribute, inject } from 'aurelia-framework';
+import { autoinject, bindable, customAttribute } from 'aurelia-framework';
 
 import { RouteMapper } from './route-mapper';
 
-@inject(Element, RouteMapper)
-@customAttribute('map-href')
+@autoinject()
+@customAttribute('mapper-href')
 export class MapperHref {
     @bindable({ changeHandler: 'processChange', primaryProperty: true })
     route: string;
