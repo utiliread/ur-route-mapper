@@ -22,7 +22,7 @@ export class MapperHref {
     processChange() {
         // Delay the updating until after both route and params are set
         this.pendingChanges = true;
-        this.taskQueue.queueMicroTask(this.makeHref);
+        this.taskQueue.queueMicroTask(this.makeHref.bind(this));
     }
 
     private makeHref() {
