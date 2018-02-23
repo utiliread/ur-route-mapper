@@ -19,6 +19,7 @@ let MapperHref = class MapperHref {
     }
     processChange() {
         // Delay the updating until after both route and params are set
+        // see https://github.com/aurelia/templating/pull/587
         this.pendingChanges = true;
         this.taskQueue.queueTask(this.makeHref.bind(this));
     }
