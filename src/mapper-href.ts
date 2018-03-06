@@ -6,10 +6,10 @@ import { RouteMapper } from './route-mapper';
 @customAttribute('mapper-href')
 export class MapperHref {
     @bindable({ changeHandler: 'processChange', primaryProperty: true })
-    route: string;
+    route?: string;
 
     @bindable({ changeHandler: 'processChange' })
-    params: any;
+    params?: any;
 
     @bindable()
     attribute = 'href';

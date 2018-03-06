@@ -4,15 +4,12 @@
         "module": "esnext",
         "moduleResolution": "node",
         "declaration": true,
+        "sourceMap": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "strict": true,
-        "strictNullChecks": false,
-        "baseUrl": "src",
-        "outDir": "dist",
-        "lib": [
-            "es2017",
-            "dom"
-        ]
+        "rootDir": "src",
+        "outDir": "dist/esm",
+        "lib": [ "esnext", "dom" ]
     }
 }

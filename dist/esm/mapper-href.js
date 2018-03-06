@@ -57,3 +57,4 @@ MapperHref = __decorate([
     __metadata("design:paramtypes", [Element, RouteMapper, TaskQueue])
 ], MapperHref);
 export { MapperHref };
+//# sourceMappingURL=mapper-href.js.map
