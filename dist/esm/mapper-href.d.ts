@@ -10,5 +10,5 @@ export declare class MapperHref {
     private pendingChanges;
     constructor(element: Element, mapper: RouteMapper, taskQueue: TaskQueue);
     processChange(): void;
-    private makeHref();
+    private makeHref;
 }
