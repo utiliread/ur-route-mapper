@@ -17,7 +17,7 @@ var MapperHref = /** @class */ (function () {
         this.element = element;
         this.mapper = mapper;
         this.taskQueue = taskQueue;
-        this.attribute = 'href';
+        this.attribute = "href";
         this.pendingChanges = false;
     }
     MapperHref.prototype.processChange = function () {
@@ -42,11 +42,11 @@ var MapperHref = /** @class */ (function () {
         }
     };
     __decorate([
-        (0, aurelia_framework_1.bindable)({ changeHandler: 'processChange', primaryProperty: true }),
+        (0, aurelia_framework_1.bindable)({ changeHandler: "processChange", primaryProperty: true }),
         __metadata("design:type", String)
     ], MapperHref.prototype, "route", void 0);
     __decorate([
-        (0, aurelia_framework_1.bindable)({ changeHandler: 'processChange' }),
+        (0, aurelia_framework_1.bindable)({ changeHandler: "processChange" }),
         __metadata("design:type", Object)
     ], MapperHref.prototype, "params", void 0);
     __decorate([
@@ -55,8 +55,10 @@ var MapperHref = /** @class */ (function () {
     ], MapperHref.prototype, "attribute", void 0);
     MapperHref = __decorate([
         (0, aurelia_framework_1.autoinject)(),
-        (0, aurelia_framework_1.customAttribute)('mapper-href'),
-        __metadata("design:paramtypes", [Element, route_mapper_1.RouteMapper, aurelia_framework_1.TaskQueue])
+        (0, aurelia_framework_1.customAttribute)("mapper-href"),
+        __metadata("design:paramtypes", [Element,
+            route_mapper_1.RouteMapper,
+            aurelia_framework_1.TaskQueue])
     ], MapperHref);
     return MapperHref;
 }());

@@ -1,5 +1,5 @@
-import { TaskQueue } from 'aurelia-framework';
-import { RouteMapper } from './route-mapper';
+import { TaskQueue } from "aurelia-framework";
+import { RouteMapper } from "./route-mapper";
 export declare class MapperHref {
     private element;
     private mapper;

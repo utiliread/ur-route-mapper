@@ -7,14 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { TaskQueue, autoinject, bindable, customAttribute } from 'aurelia-framework';
-import { RouteMapper } from './route-mapper';
+import { TaskQueue, autoinject, bindable, customAttribute, } from "aurelia-framework";
+import { RouteMapper } from "./route-mapper";
 var MapperHref = /** @class */ (function () {
     function MapperHref(element, mapper, taskQueue) {
         this.element = element;
         this.mapper = mapper;
         this.taskQueue = taskQueue;
-        this.attribute = 'href';
+        this.attribute = "href";
         this.pendingChanges = false;
     }
     MapperHref.prototype.processChange = function () {
@@ -39,11 +39,11 @@ var MapperHref = /** @class */ (function () {
         }
     };
     __decorate([
-        bindable({ changeHandler: 'processChange', primaryProperty: true }),
+        bindable({ changeHandler: "processChange", primaryProperty: true }),
         __metadata("design:type", String)
     ], MapperHref.prototype, "route", void 0);
     __decorate([
-        bindable({ changeHandler: 'processChange' }),
+        bindable({ changeHandler: "processChange" }),
         __metadata("design:type", Object)
     ], MapperHref.prototype, "params", void 0);
     __decorate([
@@ -52,8 +52,10 @@ var MapperHref = /** @class */ (function () {
     ], MapperHref.prototype, "attribute", void 0);
     MapperHref = __decorate([
         autoinject(),
-        customAttribute('mapper-href'),
-        __metadata("design:paramtypes", [Element, RouteMapper, TaskQueue])
+        customAttribute("mapper-href"),
+        __metadata("design:paramtypes", [Element,
+            RouteMapper,
+            TaskQueue])
     ], MapperHref);
     return MapperHref;
 }());

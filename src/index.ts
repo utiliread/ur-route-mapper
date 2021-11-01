@@ -1,9 +1,7 @@
-import { FrameworkConfiguration, PLATFORM } from 'aurelia-framework';
+import { FrameworkConfiguration, PLATFORM } from "aurelia-framework";
 
 export function configure(config: FrameworkConfiguration) {
-    config.globalResources(
-        PLATFORM.moduleName('./mapper-href')
-    );
+  config.globalResources(PLATFORM.moduleName("./mapper-href"));
 }
 
-export { RouteMapper } from './route-mapper';
+export { RouteMapper } from "./route-mapper";
