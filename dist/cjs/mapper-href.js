@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MapperHref = void 0;
 var aurelia_framework_1 = require("aurelia-framework");
 var route_mapper_1 = require("./route-mapper");
 var MapperHref = /** @class */ (function () {
@@ -41,20 +42,20 @@ var MapperHref = /** @class */ (function () {
         }
     };
     __decorate([
-        aurelia_framework_1.bindable({ changeHandler: 'processChange', primaryProperty: true }),
+        (0, aurelia_framework_1.bindable)({ changeHandler: 'processChange', primaryProperty: true }),
         __metadata("design:type", String)
     ], MapperHref.prototype, "route", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ changeHandler: 'processChange' }),
+        (0, aurelia_framework_1.bindable)({ changeHandler: 'processChange' }),
         __metadata("design:type", Object)
     ], MapperHref.prototype, "params", void 0);
     __decorate([
-        aurelia_framework_1.bindable(),
+        (0, aurelia_framework_1.bindable)(),
         __metadata("design:type", Object)
     ], MapperHref.prototype, "attribute", void 0);
     MapperHref = __decorate([
-        aurelia_framework_1.autoinject(),
-        aurelia_framework_1.customAttribute('mapper-href'),
+        (0, aurelia_framework_1.autoinject)(),
+        (0, aurelia_framework_1.customAttribute)('mapper-href'),
         __metadata("design:paramtypes", [Element, route_mapper_1.RouteMapper, aurelia_framework_1.TaskQueue])
     ], MapperHref);
     return MapperHref;
